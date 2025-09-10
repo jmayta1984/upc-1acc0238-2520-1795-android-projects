@@ -25,10 +25,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import pe.edu.upc.easyshop.ui.theme.EasyShopTheme
 
 @Composable
-fun Login() {
+fun Login(onLogin: () -> Unit) {
     val email = remember {
         mutableStateOf("")
     }
@@ -97,9 +99,7 @@ fun Login() {
             }
         )
         Button(
-            onClick = {
-
-            },
+            onClick = onLogin,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -113,7 +113,7 @@ fun Login() {
 @Composable
 fun LoginPreview() {
     EasyShopTheme {
-        Login()
+        Login {}
     }
 
 }
