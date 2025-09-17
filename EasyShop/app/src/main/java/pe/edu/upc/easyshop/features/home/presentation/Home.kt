@@ -40,6 +40,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -111,7 +112,7 @@ fun Home() {
                         contentDescription = null
                     )
                 },
-                placeholder = { Text("Search") },
+                placeholder = { Text(stringResource(R.string.placeholder_search)) },
                 modifier = Modifier.weight(1f),
                 shape = RoundedCornerShape(16.dp)
             )
@@ -127,12 +128,12 @@ fun Home() {
 
         ) {
             Text(
-                "Categories",
+                stringResource(R.string.label_categories),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.weight(1f)
             )
-            TextButton(onClick = {}) { Text("See all") }
+            TextButton(onClick = {}) { Text(stringResource(R.string.button_see_all)) }
         }
 
         LazyRow {
@@ -198,12 +199,12 @@ fun Home() {
 
         ) {
             Text(
-                "Products",
+                stringResource(R.string.label_products),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.weight(1f)
             )
-            TextButton(onClick = {}) { Text("See all") }
+            TextButton(onClick = {}) { Text(stringResource(R.string.button_see_all)) }
         }
 
         LazyVerticalGrid(columns = GridCells.Fixed(2)) {
@@ -213,7 +214,6 @@ fun Home() {
         }
     }
 }
-
 
 
 @Preview(showBackground = true)
