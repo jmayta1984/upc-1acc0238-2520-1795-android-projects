@@ -33,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -62,8 +63,7 @@ fun Home(viewModel: HomeViewModel) {
         mutableStateOf("All")
     }
 
-    val products = viewModel.products.collectAsState()
-    viewModel.getAllProducts()
+    val products by viewModel.products.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
@@ -214,7 +214,7 @@ fun Home(viewModel: HomeViewModel) {
         }
 
         LazyVerticalGrid(columns = GridCells.Fixed(2)) {
-            items(products.value) { product ->
+            items(products) { product ->
                 ProductCard(product)
             }
         }

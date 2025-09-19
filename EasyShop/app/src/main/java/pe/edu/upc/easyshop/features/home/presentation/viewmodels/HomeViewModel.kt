@@ -18,4 +18,8 @@ class HomeViewModel(private val repository: ProductRepository) : ViewModel() {
             _products.value = repository.getAllProducts()
         }
     }
+
+    init {
+        getAllProducts()
+    }
 }
