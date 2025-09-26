@@ -21,10 +21,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
 import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
-import pe.edu.upc.easyshop.features.home.presentation.views.Home
+import pe.edu.upc.easyshop.features.home.presentation.home.Home
 
 @Composable
-fun Main() {
+fun Main(onTapProductCard: (Int) -> Unit) {
 
     val navigationItems = listOf(
         NavigationItem(Icons.Default.Home, "Home"),
@@ -66,17 +66,9 @@ fun Main() {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            Home(getHomeViewModel())
+            Home(getHomeViewModel(), onTapProductCard)
         }
     }
 }
 
 data class NavigationItem(val icon: ImageVector, val label: String)
-
-@Preview
-@Composable
-fun MainPreview() {
-    EasyShopTheme {
-        Main()
-    }
-}

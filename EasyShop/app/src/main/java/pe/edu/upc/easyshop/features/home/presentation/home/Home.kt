@@ -1,5 +1,6 @@
-package pe.edu.upc.easyshop.features.home.presentation.views
+package pe.edu.upc.easyshop.features.home.presentation.home
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -47,15 +48,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pe.edu.upc.easyshop.R
-import pe.edu.upc.easyshop.core.ui.components.ProductCard
 import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 import pe.edu.upc.easyshop.core.ui.components.WidthSpacer
 import pe.edu.upc.easyshop.core.ui.theme.EasyShopTheme
 import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
-import pe.edu.upc.easyshop.features.home.presentation.viewmodels.HomeViewModel
 
 @Composable
-fun Home(viewModel: HomeViewModel) {
+fun Home(viewModel: HomeViewModel, onTapProductCard: (Int) -> Unit) {
 
     val categories = listOf("All", "Men", "Women", "Boys", "Girls")
 
@@ -215,17 +214,11 @@ fun Home(viewModel: HomeViewModel) {
 
         LazyVerticalGrid(columns = GridCells.Fixed(2)) {
             items(products) { product ->
-                ProductCard(product)
+                ProductCard(product){
+                    Log.d("Home", product.id.toString())
+                    onTapProductCard(product.id)
+                }
             }
         }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun HomePreview() {
-    EasyShopTheme {
-        Home(getHomeViewModel())
     }
 }
