@@ -30,7 +30,7 @@ fun ProductCard(product: Product) {
                 product.image,
                 contentDescription = null,
                 modifier = Modifier.height(128.dp).fillMaxWidth(),
-                contentScale = ContentScale.FillWidth
+                contentScale = ContentScale.FillHeight
             )
             Text(
                 product.name,
