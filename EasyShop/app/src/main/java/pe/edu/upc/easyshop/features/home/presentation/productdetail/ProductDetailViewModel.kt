@@ -20,4 +20,21 @@ class ProductDetailViewModel @Inject constructor(private val repository: Product
             _product.value = repository.getProductById(id)
         }
     }
+
+    fun toggleFavorite() {
+
+        _product.value?.let { product ->
+            viewModelScope.launch {
+                if (product.isFavorite) {
+                    repository.delete(product)
+                } else {
+                    repository.insert(product)
+                }
+                _product.value = product.copy(
+                    isFavorite = !product.isFavorite
+                )
+            }
+        }
+
+    }
 }

@@ -2,12 +2,17 @@ package pe.edu.upc.easyshop.features.home.data.repositories
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import pe.edu.upc.easyshop.features.home.data.local.dao.ProductDao
+import pe.edu.upc.easyshop.features.home.data.local.models.ProductEntity
 import pe.edu.upc.easyshop.features.home.data.remote.services.ProductService
 import pe.edu.upc.easyshop.features.home.domain.repositories.ProductRepository
 import pe.edu.upc.easyshop.shared.models.Product
 import javax.inject.Inject
 
-class ProductRepositoryImpl @Inject constructor(private val service: ProductService) : ProductRepository {
+class ProductRepositoryImpl @Inject constructor(
+    private val service: ProductService,
+    private val dao: ProductDao
+) : ProductRepository {
     override suspend fun getAllProducts(): List<Product> = withContext(Dispatchers.IO) {
         val response = service.getAllProducts()
 
@@ -39,11 +44,34 @@ class ProductRepositoryImpl @Inject constructor(private val service: ProductServ
                     id = productDto.id,
                     name = productDto.title,
                     price = productDto.price,
-                    image = productDto.thumbnail
+                    image = productDto.thumbnail,
+                    isFavorite = dao.fetchById(productDto.id).isNotEmpty()
                 )
             }
         }
 
         return@withContext null
+    }
+
+    override suspend fun insert(product: Product) = withContext(Dispatchers.IO) {
+        dao.insert(
+            ProductEntity(
+                id = product.id,
+                name = product.name,
+                product.price,
+                image = product.image
+            )
+        )
+    }
+
+    override suspend fun delete(product: Product) {
+        dao.delete(
+            ProductEntity(
+                id = product.id,
+                name = product.name,
+                product.price,
+                image = product.image
+            )
+        )
     }
 }

@@ -3,6 +3,7 @@ package pe.edu.upc.easyshop.features.home.data.local.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.Query
 import pe.edu.upc.easyshop.features.home.data.local.models.ProductEntity
 
 @Dao
@@ -12,4 +13,7 @@ interface ProductDao {
 
     @Delete
     suspend fun delete(vararg entity: ProductEntity)
+
+    @Query("select * from products where id=:id")
+    suspend fun fetchById(id: Int): List<ProductEntity>
 }
