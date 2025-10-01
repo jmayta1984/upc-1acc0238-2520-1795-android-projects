@@ -1,6 +1,5 @@
 package pe.edu.upc.easyshop.features.home.presentation.productdetail
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
