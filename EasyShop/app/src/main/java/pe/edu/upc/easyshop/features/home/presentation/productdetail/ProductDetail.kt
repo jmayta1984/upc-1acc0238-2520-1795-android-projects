@@ -25,14 +25,8 @@ import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 
 @Composable
 fun ProductDetail(viewModel: ProductDetailViewModel) {
-    Log.d("ProductDetail", viewModel.toString())
-
-
-
       val product = viewModel.product.collectAsState()
-
       product.value?.let { product ->
-          Log.d("ProductDetail", product.id.toString())
           Scaffold(
               floatingActionButton = {
                   FloatingActionButton(
