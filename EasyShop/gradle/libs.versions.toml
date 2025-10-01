@@ -16,6 +16,7 @@ retrofit = "3.0.0" # Retrofit version
 lifecycleViewmodelCompose = "2.9.4" # ViewModel integration with Jetpack Compose version
 hiltVersion = "2.57.2" # Hilt plugin and library version
 kspVersion= "2.2.20-2.0.3" # KSP plugin version
+roomRuntime = "2.8.1" # Room version
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -57,6 +58,10 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 # Hilt navigation-compose integration
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
+# Room for database
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
