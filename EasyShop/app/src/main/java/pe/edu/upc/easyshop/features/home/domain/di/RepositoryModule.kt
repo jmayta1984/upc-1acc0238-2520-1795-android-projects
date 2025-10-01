@@ -6,7 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import pe.edu.upc.easyshop.features.home.data.repositories.ProductRepositoryImpl
 import pe.edu.upc.easyshop.features.home.domain.repositories.ProductRepository
-import javax.inject.Singleton
 
 @Module
 @InstallIn(ViewModelComponent::class)
