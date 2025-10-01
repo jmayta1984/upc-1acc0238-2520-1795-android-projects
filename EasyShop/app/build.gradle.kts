@@ -76,9 +76,14 @@ dependencies {
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    // Hilt with Navigation Compose
+    implementation(libs.androidx.hilt.navigation.compose)
 }

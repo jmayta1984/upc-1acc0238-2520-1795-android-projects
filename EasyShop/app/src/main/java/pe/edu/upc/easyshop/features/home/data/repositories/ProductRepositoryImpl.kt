@@ -5,8 +5,9 @@ import kotlinx.coroutines.withContext
 import pe.edu.upc.easyshop.features.home.data.remote.services.ProductService
 import pe.edu.upc.easyshop.features.home.domain.repositories.ProductRepository
 import pe.edu.upc.easyshop.shared.models.Product
+import javax.inject.Inject
 
-class ProductRepositoryImpl(private val service: ProductService) : ProductRepository {
+class ProductRepositoryImpl @Inject constructor(private val service: ProductService) : ProductRepository {
     override suspend fun getAllProducts(): List<Product> = withContext(Dispatchers.IO) {
         val response = service.getAllProducts()
 

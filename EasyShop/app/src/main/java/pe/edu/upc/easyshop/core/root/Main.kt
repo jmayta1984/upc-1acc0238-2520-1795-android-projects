@@ -18,7 +18,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
 import pe.edu.upc.easyshop.features.home.presentation.home.Home
 
 @Composable
@@ -64,7 +63,7 @@ fun Main(onTapProductCard: (Int) -> Unit) {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            Home(getHomeViewModel()){ id ->
+            Home { id ->
                 onTapProductCard(id)
             }
         }
