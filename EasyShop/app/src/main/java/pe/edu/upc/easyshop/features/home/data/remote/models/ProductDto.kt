@@ -1,7 +1,5 @@
 package pe.edu.upc.easyshop.features.home.data.remote.models
 
-import com.google.gson.annotations.SerializedName
-
 data class ProductDto(
     val availabilityStatus: String,
     val brand: String,
