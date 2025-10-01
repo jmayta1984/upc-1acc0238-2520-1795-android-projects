@@ -1,6 +1,5 @@
 package pe.edu.upc.easyshop.features.home.presentation.productdetail
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
