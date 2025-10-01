@@ -16,14 +16,16 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 
 @Composable
-fun ProductDetail(viewModel: ProductDetailViewModel) {
+fun ProductDetail(viewModel: ProductDetailViewModel = hiltViewModel()) {
       val product = viewModel.product.collectAsState()
       product.value?.let { product ->
           Scaffold(
@@ -60,9 +62,9 @@ fun ProductDetail(viewModel: ProductDetailViewModel) {
                           style = MaterialTheme.typography.headlineSmall
                       )
                   }
-                  Row {
+                  Row (verticalAlignment = Alignment.CenterVertically) {
                       RoundedIcon(Icons.Default.Remove)
-                      Text("1")
+                      Text("1", modifier = Modifier.padding(8.dp))
                       RoundedIcon(Icons.Default.Add)
                   }
               }

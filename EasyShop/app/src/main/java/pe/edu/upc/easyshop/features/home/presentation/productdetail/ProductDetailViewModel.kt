@@ -18,7 +18,6 @@ class ProductDetailViewModel @Inject constructor(private val repository: Product
 
     fun getProductById(id: Int) {
         viewModelScope.launch {
-            Log.d("ProductDetailViewModel", id.toString())
             _product.value = repository.getProductById(id)
         }
     }
