@@ -20,7 +20,6 @@ import pe.edu.upc.easyshop.shared.models.Product
 fun ProductCard(product: Product, onClick: () -> Unit) {
     Card(modifier = Modifier.padding(8.dp),
         onClick = {
-            Log.d("ProductCard", product.id.toString())
             onClick()
         }
         ) {

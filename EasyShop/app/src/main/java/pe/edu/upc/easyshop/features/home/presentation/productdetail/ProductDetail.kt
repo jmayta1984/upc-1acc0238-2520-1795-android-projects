@@ -25,53 +25,58 @@ import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 
 @Composable
 fun ProductDetail(viewModel: ProductDetailViewModel) {
+    Log.d("ProductDetail", viewModel.toString())
 
-    val product = viewModel.product.collectAsState()
-    product.value?.let { product ->
-        Log.d("ProductDetail", product.id.toString())
-        Scaffold(
-            floatingActionButton = {
-                FloatingActionButton(
-                    onClick = {
+    /*
 
-                    }) {
-                    Text("Add to cart")
-                }
-            },
-            floatingActionButtonPosition = FabPosition.Center
+      val product = viewModel.product.collectAsState()
 
-        ) { paddingValues ->
-            Column(modifier = Modifier.padding(paddingValues)) {
-                AsyncImage(
-                    product.image,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(256.dp),
-                    contentScale = ContentScale.FillHeight
-                )
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        product.name,
-                        style = MaterialTheme.typography.headlineSmall
-                    )
-                    Text(
-                        "%.2f".format(product.price),
-                        style = MaterialTheme.typography.headlineSmall
-                    )
-                }
-                Row {
-                    RoundedIcon(Icons.Default.Remove)
-                    Text("1")
-                    RoundedIcon(Icons.Default.Add)
-                }
-            }
+      product.value?.let { product ->
+          Log.d("ProductDetail", product.id.toString())
+          Scaffold(
+              floatingActionButton = {
+                  FloatingActionButton(
+                      onClick = {
 
-        }
-    }
+                      }) {
+                      Text("Add to cart")
+                  }
+              },
+              floatingActionButtonPosition = FabPosition.Center
+
+          ) { paddingValues ->
+              Column(modifier = Modifier.padding(paddingValues)) {
+                  AsyncImage(
+                      product.image,
+                      contentDescription = null,
+                      modifier = Modifier
+                          .fillMaxWidth()
+                          .height(256.dp),
+                      contentScale = ContentScale.FillHeight
+                  )
+                  Row(
+                      modifier = Modifier.fillMaxWidth(),
+                      horizontalArrangement = Arrangement.SpaceBetween
+                  ) {
+                      Text(
+                          product.name,
+                          style = MaterialTheme.typography.headlineSmall
+                      )
+                      Text(
+                          "%.2f".format(product.price),
+                          style = MaterialTheme.typography.headlineSmall
+                      )
+                  }
+                  Row {
+                      RoundedIcon(Icons.Default.Remove)
+                      Text("1")
+                      RoundedIcon(Icons.Default.Add)
+                  }
+              }
+
+          }
+      }
 
 
+     */
 }

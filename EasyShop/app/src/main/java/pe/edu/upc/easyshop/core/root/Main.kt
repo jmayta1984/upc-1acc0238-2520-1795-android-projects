@@ -66,7 +66,9 @@ fun Main(onTapProductCard: (Int) -> Unit) {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            Home(getHomeViewModel(), onTapProductCard)
+            Home(getHomeViewModel()){ id ->
+                onTapProductCard(id)
+            }
         }
     }
 }

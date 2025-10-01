@@ -20,37 +20,49 @@ import pe.edu.upc.easyshop.features.home.presentation.productdetail.ProductDetai
 fun AppNavigation(){
     val navController = rememberNavController()
     val loginViewModel = getLoginViewModel()
+    val productDetailViewModel = getProductDetailViewModel()
+
 
     NavHost(navController, startDestination = Route.Login.route) {
         composable(Route.Login.route){
+            Log.d("AppNavigation", "Login")
             Login(loginViewModel) {
                 navController.navigate(Route.Main.route)
             }
+
+
         }
+
 
         composable (Route.Main.route){
+            Log.d("AppNavigation", "Main")
+
             Main { productId ->
-                navController.navigate("${Route.ProductDetail.route}/${productId}")
-                Log.d("AppNavigation", productId.toString())
+                navController.navigate("${Route.ProductDetail.route}/$productId")
+
             }
         }
-
+/*
         composable (
             route = Route.ProductDetail.routeWithArgument,
             arguments = listOf(navArgument(Route.ProductDetail.argument) {
                 type = NavType.IntType
             })
         ) { navBackStackEntry ->
-            Log.d("AppNavigation", navBackStackEntry.arguments.toString())
             navBackStackEntry.arguments?.let { arguments ->
 
                 val productId = arguments.getInt(Route.ProductDetail.argument)
-                val productDetailViewModel = getProductDetailViewModel()
-                productDetailViewModel.getProductById(productId)
-                ProductDetail(productDetailViewModel)
+                Log.d("AppNavigation", productId.toString())
+
+                //productDetailViewModel.getProductById(productId)
+                //ProductDetail(productDetailViewModel)
+
+
             }
 
         }
+
+ */
     }
 }
 
