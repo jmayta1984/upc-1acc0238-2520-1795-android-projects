@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import pe.edu.upc.easymovie.core.ui.theme.EasyMovieTheme
+import pe.edu.upc.easymovie.features.favorites.FavoritesMovie
 import pe.edu.upc.easymovie.features.movies.presentation.SearchMovie
 
 @AndroidEntryPoint
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             EasyMovieTheme {
                 Scaffold { innerPadding ->
-                    SearchMovie(modifier = Modifier.padding(innerPadding))
+                    FavoritesMovie(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

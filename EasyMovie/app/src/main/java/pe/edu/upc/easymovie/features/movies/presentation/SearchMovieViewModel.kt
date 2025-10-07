@@ -1,5 +1,6 @@
 package pe.edu.upc.easymovie.features.movies.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,7 +12,8 @@ import pe.edu.upc.easymovie.features.movies.domain.MovieRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchMovieViewModel @Inject constructor(private val repository: MovieRepository) : ViewModel() {
+class SearchMovieViewModel @Inject constructor(private val repository: MovieRepository) :
+    ViewModel() {
     private val _query = MutableStateFlow("")
     val query: StateFlow<String> = _query
 
@@ -26,5 +28,28 @@ class SearchMovieViewModel @Inject constructor(private val repository: MovieRepo
         viewModelScope.launch {
             _movies.value = repository.searchMovie(_query.value)
         }
+    }
+
+
+    fun toggleFavorite(movie: Movie) {
+        Log.d("SearchMovieViewModel", movie.isFavorite.toString())
+        viewModelScope.launch {
+            if (movie.isFavorite) {
+                repository.deleteFavorite(movie)
+            } else {
+                repository.insertFavorite(movie)
+            }
+
+        }
+
+        _movies.value = _movies.value.map { item ->
+            if (item.id == movie.id){
+                item.copy(isFavorite = !item.isFavorite)
+            } else {
+                item
+            }
+        }
+
+
     }
 }
